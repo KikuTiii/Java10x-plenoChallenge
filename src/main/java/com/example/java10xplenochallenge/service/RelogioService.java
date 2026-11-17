@@ -8,6 +8,7 @@ import com.example.java10xplenochallenge.entity.Relogio;
 import com.example.java10xplenochallenge.entity.enums.MaterialCaixa;
 import com.example.java10xplenochallenge.entity.enums.TipoMovimento;
 import com.example.java10xplenochallenge.entity.enums.TipoVidro;
+import com.example.java10xplenochallenge.exception.NaoEncontradoException;
 import com.example.java10xplenochallenge.mapper.RelogioMapper;
 import com.example.java10xplenochallenge.repository.RelogioRepository;
 import lombok.RequiredArgsConstructor;
@@ -83,7 +84,7 @@ public class RelogioService {
     }
 
     public RelogioDto buscarPorId(UUID id) {
-        Relogio r = relogioRepository.findById(id).orElseThrow(() -> new NaoEncontradoException("Relogio não encontrado: " + id);
+        Relogio r = relogioRepository.findById(id).orElseThrow(() -> new NaoEncontradoException("Relogio não encontrado: " + id));
         return mapeador.toDto(r);
     }
 
